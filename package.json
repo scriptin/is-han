@@ -2,8 +2,12 @@
   "name": "@scriptin/is-han",
   "version": "1.0.0",
   "description": "Unicode-aware Han characters (hanzi, kanji, hanja) detection",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsup index.ts --format cjs,esm --dts --sourcemap",
+    "lint": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,5 +39,11 @@
   "bugs": {
     "url": "https://github.com/scriptin/is-han/issues"
   },
-  "homepage": "https://github.com/scriptin/is-han"
+  "homepage": "https://github.com/scriptin/is-han",
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "prettier": "^2.8.4",
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.5"
+  }
 }
