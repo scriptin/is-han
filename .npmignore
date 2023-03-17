@@ -1,11 +1,10 @@
-vitest.config.js
-**/*.test.ts
-**/*.spec.ts
+# Test files
+**/*.test.*
+**/*.spec.*
 
+# Configurations
 .editorconfig
-
-tsconfig.json
-
-.prettierignore
-.prettierrc.cjs
+vitest.config.*
+tsconfig.*
+.prettier*
 
