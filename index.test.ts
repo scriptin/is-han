@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isHan } from './index';
+import { isClosingMark, isHan, isHanExt, isIterationMark } from './index';
 
 describe('isHan', () => {
   it('matches BMP Han characters', () => {
@@ -27,4 +27,94 @@ describe('isHan', () => {
       expect(isHan(c)).toBeFalsy();
     },
   );
+});
+
+describe('isHanExtended', () => {
+  it.each(['々', '〆'])('matches ideographic mark symbol %s', (c) => {
+    expect(isHanExt(c)).toBeTruthy();
+  });
+
+  // sample, not exhaustive
+  it.each(Array.from('㇀㇁㇂㇃㇄㇅㇆㇇㇈㇉㇊㇋㇌㇍㇎㇏'))(
+    'matches CJK stroke %s',
+    (c) => {
+      expect(isHanExt(c)).toBeTruthy();
+    },
+  );
+
+  it.each(
+    Array.from(
+      '㈠㈡㈢㈣㈤㈥㈦㈧㈨㈩㈪㈫㈬㈭㈮㈯㈰㈱㈲㈳㈴㈵㈶㈷㈸㈹㈺㈻㈼㈽㈾㈿㉀㉁㉂㉃',
+    ),
+  )('matches "paranthesized" character %s', (c) => {
+    expect(isHanExt(c)).toBeTruthy();
+  });
+
+  it.each(
+    Array.from(
+      '㉄㉅㉆㉇㊀㊁㊂㊃㊄㊅㊆㊇㊈㊉㊊㊋㊌㊍㊎㊏㊐㊑㊒㊓㊔㊕㊖㊗㊘㊙㊚㊛㊜㊝㊞㊟㊠㊡㊢㊣㊤㊥㊦㊧㊨㊩㊪㊫㊬㊭㊮㊯㊰',
+    ),
+  )('matches "circled" character %s', (c) => {
+    expect(isHanExt(c)).toBeTruthy();
+  });
+
+  it.each(Array.from('㋀㋁㋂㋃㋄㋅㋆㋇㋈㋉㋊㋋'))(
+    'matches month character %s',
+    (c) => {
+      expect(isHanExt(c)).toBeTruthy();
+    },
+  );
+
+  it.each(
+    Array.from(
+      '㏠㏡㏢㏣㏤㏥㏦㏧㏨㏩㏪㏫㏬㏭㏮㏯㏰㏱㏲㏳㏴㏵㏶㏷㏸㏹㏺㏻㏼㏽㏾',
+    ),
+  )('matches day of month character %s', (c) => {
+    expect(isHanExt(c)).toBeTruthy();
+  });
+
+  it.each(Array.from('㍘㍙㍚㍛㍜㍝㍞㍟㍠㍡㍢㍣㍤㍥㍦㍧㍨㍩㍪㍫㍬㍭㍮㍯㍰'))(
+    'matches hour character %s',
+    (c) => {
+      expect(isHanExt(c)).toBeTruthy();
+    },
+  );
+
+  it.each(Array.from('㋿㍻㍼㍽㍾㍿'))(
+    'matches "compressed" character %s',
+    (c) => {
+      expect(isHanExt(c)).toBeTruthy();
+    },
+  );
+
+  it.each(
+    Array.from(
+      '🈐🈑🈒🈓🈔🈕🈖🈗🈘🈙🈚🈛🈜🈝🈞🈟🈠🈡🈢🈣🈤🈥🈦🈧🈨🈩🈪🈫🈬🈭🈮🈯🈰🈱🈲🈳🈴🈵🈶🈷🈸🈹🈺🈻',
+    ),
+  )('matches "squared" character %s', (c) => {
+    expect(isHanExt(c)).toBeTruthy();
+  });
+
+  it.each(Array.from('🉀🉁🉂🉃🉄🉅🉆🉇🉈'))(
+    'matches "bracketed" character %s',
+    (c) => {
+      expect(isHanExt(c)).toBeTruthy();
+    },
+  );
+
+  it.each(Array.from('🉐🉑'))('matches "circled" character %s', (c) => {
+    expect(isHanExt(c)).toBeTruthy();
+  });
+});
+
+describe('isIterationMark', () => {
+  it('matches 々 IDEOGRAPHIC ITERATION MARK', () => {
+    expect(isIterationMark('々')).toBeTruthy();
+  });
+});
+
+describe('isIterationMark', () => {
+  it('matches 〆 IDEOGRAPHIC CLOSING MARK', () => {
+    expect(isClosingMark('〆')).toBeTruthy();
+  });
 });
