@@ -2,11 +2,6 @@ name: Publish NPM packages
 
 on:
   workflow_dispatch: # Manually, for alpha/beta versions
-    inputs:
-      pre_release_version:
-        description: 'Pre-release version modifier'
-        required: true
-        default: 'e.g. "alpha.1" -> "1.2.3-alpha.1"'
   push:
     tags:
       - '*'
