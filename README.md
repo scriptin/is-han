@@ -67,7 +67,7 @@ console.log(Array.from('𠀋')); // -> ['𠀋']
 
 # FAQ
 
-#### Why do I have to use `Array.from(str)` and `for/of`?
+#### ❓ Why do I have to use `Array.from(str)` and `for/of`?
 
 Because JavaScript (and TypeScript) use UTF-18 for strings, and some of more recent
 additions into Unicode don't fit into 16 bit. In such cases, characters are represented
@@ -77,7 +77,7 @@ with [surrogates](https://en.wikipedia.org/wiki/Universal_Character_Set_characte
 This library cannot change this JavaScript feature, so you have to use these two methods,
 and avoid using `Array.split()`, `String.codePointAt()`, `String.charCodeAt()`, etc.
 
-#### Can I detect language (Chinese/Japanese/Korean) for a given Han character?
+#### ❓ Can I detect language (Chinese/Japanese/Korean) for a given Han character?
 
 No, because of [Han unification](https://en.wikipedia.org/wiki/Han_unification)
 most of CJK characters are represented with shared code points.
@@ -88,7 +88,7 @@ of a web page or a PDF document, or as a setting in an operating system.
 
 This library doesn't provide methods to distinguish between languages.
 
-#### Can I distinguish between Traditional and Simplified Chinese characters?
+#### ❓ Can I distinguish between Traditional and Simplified Chinese characters?
 
 In some cases, yes. In others, traditional and simplified variants
 share same code points. See [this article](https://r12a.github.io/scripts/chinese/).
