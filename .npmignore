@@ -8,3 +8,5 @@ vitest.config.*
 tsconfig.*
 .prettier*
 
+# GitHub
+.github
