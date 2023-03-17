@@ -1,0 +1,38 @@
+name: Publish NPM packages
+
+on:
+  workflow_dispatch: # Manually, for alpha/beta versions
+    inputs:
+      pre_release_version:
+        description: 'Pre-release version modifier'
+        required: true
+        default: 'e.g. "alpha.1" -> "1.2.3-alpha.1"'
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+          cache-dependency-path: 'node/package-lock.json'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint/typecheck
+        run: npm run lint
+      - name: Test
+        run: npm run test
+      - name: Build
+        run: npm run build
+      - name: Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
