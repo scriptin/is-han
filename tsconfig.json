@@ -8,5 +8,7 @@
     "noUncheckedIndexedAccess": true,                    /* Add 'undefined' to a type when accessed using an index. */
     "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
     "noEmit": true, // handled by tsup
-  }
+  },
+  "include": ["*.ts"],
+  "exclude": ["*.spec.ts", "*.test.ts"],
 }
