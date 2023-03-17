@@ -1,0 +1,11 @@
+vitest.config.js
+**/*.test.ts
+**/*.spec.ts
+
+.editorconfig
+
+tsconfig.json
+
+.prettierignore
+.prettierrc.cjs
+
