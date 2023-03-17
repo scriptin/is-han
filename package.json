@@ -1,0 +1,39 @@
+{
+  "name": "@scriptin/is-han",
+  "version": "1.0.0",
+  "description": "Unicode-aware Han characters (hanzi, kanji, hanja) detection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scriptin/is-han.git"
+  },
+  "keywords": [
+    "han",
+    "hanzi",
+    "kanji",
+    "hanja",
+    "cjk",
+    "cjkv",
+    "chinese",
+    "japanese",
+    "korean",
+    "unicode",
+    "utf8",
+    "is-han",
+    "is-hanzi",
+    "is-kanji",
+    "is-hanja"
+  ],
+  "author": {
+    "name": "Dmitry Shpika",
+    "url": "https://scriptin.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scriptin/is-han/issues"
+  },
+  "homepage": "https://github.com/scriptin/is-han"
+}
