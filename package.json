@@ -1,6 +1,6 @@
 {
   "name": "@scriptin/is-han",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unicode-aware Han characters (hanzi, kanji, hanja) detection",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
