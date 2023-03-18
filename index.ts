@@ -18,11 +18,15 @@ export const HAN_RANGES: Range[] = [
 
 // 々 IDEOGRAPHIC ITERATION MARK
 export const IDEOGRAPHIC_ITERATION_MARK_CODE_POINT = 0x3005;
-export const IDEOGRAPHIC_ITERATION_MARK = String.fromCodePoint(IDEOGRAPHIC_ITERATION_MARK_CODE_POINT);
+export const IDEOGRAPHIC_ITERATION_MARK = String.fromCodePoint(
+  IDEOGRAPHIC_ITERATION_MARK_CODE_POINT,
+);
 
 // 〆 IDEOGRAPHIC CLOSING MARK
-export const IDEOGRAPHIC_CLOSING_MARK_CODE_POINT = 0x3006
-export const IDEOGRAPHIC_CLOSING_MARK = String.fromCodePoint(IDEOGRAPHIC_CLOSING_MARK_CODE_POINT);
+export const IDEOGRAPHIC_CLOSING_MARK_CODE_POINT = 0x3006;
+export const IDEOGRAPHIC_CLOSING_MARK = String.fromCodePoint(
+  IDEOGRAPHIC_CLOSING_MARK_CODE_POINT,
+);
 
 export const HAN_EXT_RANGES: Range[] = [
   // CJK Symbols and Punctuation:
@@ -105,7 +109,7 @@ export function isHan(str: string): boolean {
  * Checks if a character is an "extended" Han script character.
  * "Extended" means all Unicode characters which:
  *
- * - contain Han characters with additional wrappers, such as symbols inside brackets, circles, etc.
+ * - contain Han characters with additional wrappers, such as characters inside brackets, circles, etc.
  * - contain multiple "compacted" Han characters, such as Japanese "square era names", etc.
  * - contain parts of Han characters, such as CJK strokes
  * - 々 IDEOGRAPHIC ITERATION MARK - {@link isIterationMark}
@@ -146,5 +150,3 @@ export function isIterationMark(str: string): boolean {
 export function isClosingMark(str: string): boolean {
   return str === IDEOGRAPHIC_CLOSING_MARK;
 }
-
-

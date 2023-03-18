@@ -45,10 +45,10 @@ console.log(Array.from('𠀋')); // -> ['𠀋']
 
 - `isHanExt(char: string): boolean` - Checks if a character is an "extended" Han script character.
   Useful when you're looking for obscure characters which contain Han script,
-  e.g. symbols like 🈲, 🈯, 🈳, 🉐, 🉑, ㊄, ㋋, ㏾, ㍰,
+  e.g. symbols like 🈲, 🈯, 🈳, 🉐, 🉑, ㊄, ㋋, ㏾, ㍰, etc.
   "Extended" means all Unicode characters which:
 
-  - contain Han characters with additional wrappers, such as symbols inside brackets, circles, etc.
+  - contain Han characters with additional wrappers, such as characters inside brackets, circles, etc.
   - contain multiple "compacted" Han characters, such as Japanese "square era names", etc.
   - contain parts of Han characters, such as CJK strokes
   - 々 IDEOGRAPHIC ITERATION MARK (see below)
@@ -69,17 +69,17 @@ console.log(Array.from('𠀋')); // -> ['𠀋']
 
 #### ❓ Why do I have to use `Array.from(str)` and `for/of`?
 
-Because JavaScript (and TypeScript) use UTF-18 for strings, and some of more recent
+Because JavaScript (and TypeScript) use UTF-16 for strings, and some of more recent
 additions into Unicode don't fit into 16 bit. In such cases, characters are represented
 with [surrogates](https://en.wikipedia.org/wiki/Universal_Character_Set_characters#Surrogates).
-`Array.from()` and `for/of` were added in more recent versions of ECMAScript and were made Unicode-aware.
+`Array.from()` and `for/of` were added in more recent versions of ECMAScript and are Unicode-aware.
 
 This library cannot change this JavaScript feature, so you have to use these two methods,
 and avoid using `Array.split()`, `String.codePointAt()`, `String.charCodeAt()`, etc.
 
 #### ❓ Can I detect language (Chinese/Japanese/Korean) for a given Han character?
 
-No, because of [Han unification](https://en.wikipedia.org/wiki/Han_unification)
+No. Because of the [Han unification](https://en.wikipedia.org/wiki/Han_unification)
 most of CJK characters are represented with shared code points.
 Each code point can be associated with multiple versions/variants of the same character,
 including regional, stylistic, and other variations. In order to determine a language,
@@ -91,7 +91,7 @@ This library doesn't provide methods to distinguish between languages.
 #### ❓ Can I distinguish between Traditional and Simplified Chinese characters?
 
 In some cases, yes. In others, traditional and simplified variants
-share same code points. See [this article](https://r12a.github.io/scripts/chinese/).
+share the same code points. See [this article](https://r12a.github.io/scripts/chinese/).
 For a sufficiently big text, you can determine if it's traditional or simplified
 by looking for specific code points.
 
